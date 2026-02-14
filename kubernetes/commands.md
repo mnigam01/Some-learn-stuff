@@ -116,7 +116,7 @@ with this you can run the app on 8000 using localhost
 19. other wise
 kubectl get nodes -o wide
 use internal-ip from here
-kubectl get service
+kubectl get services
 get port from here
 
 20. delete deployment and service 
@@ -126,3 +126,43 @@ kubectl delete deployment fastapi-deployment
 
 22. delete everything
 delete deployment, service, cluster using kind
+
+23. pods are ephemeral means they can die, and each pod have a unique ip, when a pod dies a new pod
+is created which has a different ip. if you are using ip to communicate with pods this will be troublesome
+so we use service and attach it to each pod, which has static ip, even if a pod dies and a new pod takes its
+place its service ip remains same.
+
+24. there is one more component of kuberenetes, ingress. it takes the request and forward it to service. ingress
+open the port to outerworld using secure https protocol
+
+25. minikube another way of using kubernetes locally
+first install a hyperwiser then minikube 
+
+26. kubectl describe pod pod-name
+
+27. enter terminal of a pod
+kubectl exec -it pod-name --bash
+
+28. kubectl get pod -o wide
+
+29. Labels – Key-value tags attached to objects
+Selectors – Used to find matching objects
+Namespace – Logical isolation inside cluster
+
+30. deployment practice
+resources:
+  requests:
+    memory: "128Mi"
+    cpu: "100m"
+  limits:
+    memory: "256Mi"
+    cpu: "500m"
+
+31. ClusterIP (default service type)
+Explain:
+ClusterIP → Internal only
+NodePort → External via node IP
+LoadBalancer → Cloud environments
+service can have these above types
+
+32. ✔ kubectl get events (SUPER useful)
